@@ -1,4 +1,5 @@
 from rbtools.api.client import RBClient
+from rbtools.api.errors import APIError
 
 from helga import settings, log
 from helga.plugins import command
@@ -28,7 +29,12 @@ def get_open_reviews(args):
         logger.error(u'Could not get RBClient root')
         return None
 
-    req = root.get_review_requests(**args)
+    try:
+        req = root.get_review_requests(**args)
+    except APIError:
+        logger.exception(u'Error querying API')
+        return None
+
     ret = {'total': req.total_results, 'reviews': []}
     review_fmt = u"[{user}] {summary} ({url}/r/{id})"
 
@@ -55,7 +61,7 @@ def get_reviews(for_type, for_arg, limit=MAX_RESULTS_CHANNEL):
     reviews = get_open_reviews(kwargs)
 
     if not reviews:
-        return u'Error getting {for_type} reviews for {for_arg}'.format(for_type=for_type, for_arg=for_arg)
+        return u"Error getting reviews for {for_type} '{for_arg}'".format(for_type=for_type, for_arg=for_arg)
 
     responses = []
 

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='helga-reviews',
-    version='0.0.2',
+    version='0.0.3',
     description=('A helga command to query reviewboard pending reviews targeted at a user, group'
                  'or channel (using a channel-to-group mapping).'),
     classifiers=[
