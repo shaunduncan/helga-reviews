@@ -7,7 +7,7 @@ or channel (using a channel-to-group mapping).
 Settings
 --------
 
-**REVIEWS_RB_URL** ReviewBoard URL
+**REVIEWS_REVIEWBOARD_URL** ReviewBoard URL
 
 **REVIEWS_MAX_RESULTS_CHANNEL** Maximum results to returnn in a channel (Default 5)
 

@@ -4,7 +4,7 @@ from helga import settings, log
 from helga.plugins import command
 
 
-REVIEWBOARD_URL = getattr(settings, 'REVIEWS_RB_URL', None)
+REVIEWBOARD_URL = getattr(settings, 'REVIEWS_REVIEWBOARD_URL', None)
 MAX_RESULTS_CHANNEL = getattr(settings, 'REVIEWS_MAX_RESULTS_CHANNEL', 5)
 MAX_RESULTS_PRIVMSG = getattr(settings, 'REVIEWS_MAX_RESULTS_PRIVMSG', 10)
 CHANNEL_GROUP_MAPPING = getattr(settings, 'REVIEWS_CHANNEL_GROUP_MAPPING', {})
