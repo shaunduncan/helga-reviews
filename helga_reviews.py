@@ -6,6 +6,8 @@ from helga.plugins import command
 
 
 REVIEWBOARD_URL = getattr(settings, 'REVIEWS_REVIEWBOARD_URL', None)
+REVIEWBOARD_USERNAME = getattr(settings, 'REVIEWS_REVIEWBOARD_USERNAME', None)
+REVIEWBOARD_PASSWORD = getattr(settings, 'REVIEWS_REVIEWBOARD_PASSWORD', None)
 MAX_RESULTS_CHANNEL = getattr(settings, 'REVIEWS_MAX_RESULTS_CHANNEL', 5)
 MAX_RESULTS_PRIVMSG = getattr(settings, 'REVIEWS_MAX_RESULTS_PRIVMSG', 10)
 CHANNEL_GROUP_MAPPING = getattr(settings, 'REVIEWS_CHANNEL_GROUP_MAPPING', {})
@@ -23,6 +25,11 @@ def get_open_reviews(args):
         args['max_results'] = 100
 
     client = RBClient(REVIEWBOARD_URL)
+
+    # If we have a username and password, login
+    if REVIEWBOARD_USERNAME and REVIEWBOARD_PASSWORD:
+        client.login(REVIEWBOARD_USERNAME, REVIEWBOARD_PASSWORD)
+
     root = client.get_root()
 
     if not root:
