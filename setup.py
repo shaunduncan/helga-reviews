@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='helga-reviews',
-    version='0.0.4',
+    version='0.0.5',
     description=('A helga command to query reviewboard pending reviews targeted at a user, group'
                  'or channel (using a channel-to-group mapping).'),
     classifiers=[
@@ -25,7 +25,7 @@ setup(
     py_modules=['helga_reviews'],
     include_package_data=True,
     install_requires=[
-        'RBTools==0.6.1'
+        'RBTools'
     ],
     zip_safe=True,
     entry_points=dict(
